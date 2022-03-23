@@ -1,0 +1,19 @@
+{
+  "name": "gobbys-api",
+  "version": "1.0.0",
+  "description": "shows details of the gobbys clan",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsvara/gobbys-api.git"
+  },
+  "author": "vara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itsvara/gobbys-api/issues"
+  },
+  "homepage": "https://github.com/itsvara/gobbys-api#readme"
+}
