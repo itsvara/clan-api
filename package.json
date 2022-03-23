@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/itsvara/gobbys-api/issues"
   },
-  "homepage": "https://github.com/itsvara/gobbys-api#readme"
+  "homepage": "https://github.com/itsvara/gobbys-api#readme",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "superagent": "^7.1.1",
+    "ws": "^8.5.0"
+  }
 }
