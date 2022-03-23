@@ -3,4 +3,4 @@
 ### we be gobbin 🥶🥶🥶🥶
 shows details of the gobbys clan
 
-## https://varanox.xyz/clash/coc-clan
+## https://varanox.xyz/gobbys-api/
