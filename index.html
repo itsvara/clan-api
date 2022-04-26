@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>The Gobbys</title>
+    <title>Clan Info</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="description" content="" />
@@ -14,9 +14,18 @@
 
 <body>
     <div class="header">
-        <h1 style="padding-top:1vmax; text-align: center; color:#DDD">Gobbys API</h1>
-        <div class="banner">
-            <img width="128px" height="128px" src="https://api-assets.clashofclans.com/badges/200/xTqLJXpqt5CEEAIpQkZWKvdQjKuBaRpUSH6RCGfVsmY.png" alt="Clan Banner">
+        <h1 style="padding-top:1vmax; text-align: center; color:#DDD">Clan API</h1>
+        <div class="center">
+            <img width="128px" height="128px"
+                src="https://api-assets.clashofclans.com/badges/200/xTqLJXpqt5CEEAIpQkZWKvdQjKuBaRpUSH6RCGfVsmY.png"
+                alt="Clan Banner">
+        </div>
+        <h2 style="text-align:center">Input Clan Tag (Without the #)</h2>
+        <br>
+        <div class="center">
+            <input maxlength="10" id="clantag" style="color: 2F2F2F;" type="text">
+            <button id="submitbutton" onclick="handletag()">Submit</button>
+            </form>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" crossorigin="anonymous">
@@ -26,14 +35,41 @@
 </body>
 
 <style>
+    h1,
+    h2,
+    h3 {
+        color: #DDD
+    }
+
     body {
         background-color: #171717;
     }
 
-    .banner {
+    .center {
         display: flex;
         justify-content: center;
     }
 </style>
+
+<script>
+    const socket = new WebSocket('ws://localhost:8080')
+    const input = document.getElementById("clantag")
+    const submit = document.getElementById("submitbutton")
+
+    function handletag() {
+        var taginput = input.value
+        console.log("recieved tag: " + taginput)
+        socket.send(taginput)
+    }
+
+    socket.addEventListener('open', function (Event) {
+        socket.send("hi server :)");
+        console.log("sent: hi server :)")
+    });
+
+    socket.addEventListener('message', function (event) {
+        console.log('server says:', event.data);
+    });
+</script>
 
 </html>
