@@ -1,6 +1,6 @@
-# gobbys-api
+# clan-api
 
-### we be gobbin 🥶🥶🥶🥶
-shows details of the gobbys clan
+### 🥶🥶🥶🥶
+shows details of a clash of clans clan of your choice
 
-## https://varanox.xyz/gobbys-api/
+## https://varanox.xyz/clan-api/
