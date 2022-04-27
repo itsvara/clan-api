@@ -15,7 +15,6 @@
 <body>
     <div class="header">
         <h1 style="padding-top:1vmax; text-align: center; color:#DDD">Clan API</h1>
-        <h5 style="text-align:center">(WIP) only works locally right now</h3>
             <div class="center">
                 <img width="128px" height="128px"
                     src="https://api-assets.clashofclans.com/badges/200/Ysta8QNmzhRo0dJZBw1-y8MkDas74KsCNZVJSDFfISE.png"
@@ -24,7 +23,7 @@
             <h2 style="text-align:center">Input Clan Tag (Without the #)</h2>
             <br>
             <div class="center">
-                <input maxlength="10" id="clantag" style="color: 2F2F2F;" type="text">
+                <input maxlength="9" id="clantag" style="color: 2F2F2F;" type="text">
                 <button id="submitbutton" onclick="handletag()">Submit</button>
                 </form>
             </div>
@@ -68,7 +67,7 @@
 </style>
 
 <script>
-    const socket = new WebSocket('ws://localhost:8080')
+    const socket = new WebSocket('ws://varanox.xyz:80')
     const input = document.getElementById("clantag")
     const submit = document.getElementById("submitbutton")
 
