@@ -28,7 +28,4 @@ wss.on('connection', function connection(ws) {
         }
         //var clandata = fs.readFileSync("claninfo.json").toString();
     });
-
-    ws.send("hey")
-    console.log("sent: hey")
 });
