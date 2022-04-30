@@ -16,16 +16,40 @@
     <div class="header">
         <h1 style="padding-top:1vmax; text-align: center; color:#DDD">Clan API</h1>
         <div class="center">
-            <img id="clanbanner" width="128px" height="128px"
+            <img id="clanBanner" width="128px" height="128px"
                 src="https://api-assets.clashofclans.com/badges/200/Ysta8QNmzhRo0dJZBw1-y8MkDas74KsCNZVJSDFfISE.png"
                 alt="Clan Banner">
         </div>
-        <h2 style="text-align:center">Input Clan Tag (Without the #)</h2>
-        <br>
+        <h2 style="text-align:center; padding-bottom:0.5rem">Input Clan Tag (Without the #)</h2>
         <div class="center">
             <input maxlength="9" id="clantag" style="color: 2F2F2F;" type="text">
             <button id="submitbutton" onclick="handletag()">Submit</button>
-            </form>
+        </div>
+    </div>
+    <hr style="margin-top: 2.5rem" class="hrfade">
+    <div class="text-center">
+        <div id="info" class="info"> 
+            <h1 style="padding-top: 1rem;">Info</h1>
+            <h1 style="color:#b00000" id="invalidClan"></h1>
+            <br>
+            <h2 class="clanitem" id="clanName"></h2>
+            <h2 class="clanitem" id="clanLevel"></h2>
+            <h2 class="clanitem" id="currentMembers"></h2>
+            <h5 class="clanitem" id="clanTagDisplay"></h5>
+            <h5 class="clanitem" id="clanDescription"></h5>
+            <br>
+            <h5 class="clanitem" id="CWL"></h5>
+            <h5 class="clanitem" id="totalTrophies"></h5>
+            <h5 class="clanitem" id="totalVersusTrophies"></h5>
+            <h5 class="clanitem" id="clanLocation"></h5>
+            <h5 class="clanitem" id="chatLanguage"></h5>
+            <h5 class="clanitem" id="clanType"></h5>
+            <h5 class="clanitem" id="requiredTrophies"></h5>
+            <h5 class="clanitem" id="requiredVersusTrophies"></h5>
+            <h5 class="clanitem" id="requiredTH"></h5>
+
+            <br>
+
         </div>
     </div>
     <a rel="noreferrer" href="https://github.com/itsvara" target="_blank"><svg class="githublink" alt="Github"
@@ -53,25 +77,62 @@
         background-color: #171717;
     }
 
+    .text-center {
+        text-align: center;
+    }
+
     .center {
         display: flex;
         justify-content: center;
     }
 
     .githublink {
-        margin-top: 27%;
+        margin-top: 19.25%;
         margin-left: auto;
         margin-right: auto;
         display: block;
+    }
+
+    .hrfade {
+        border: 0;
+        height: 2px;
+        width: 35%;
+        background-image: linear-gradient(to right, transparent, #bdbdbd, transparent);
+        margin: auto;
+    }
+
+    #clanDescription {
+        margin: auto;
+        max-width: 50ch;
     }
 </style>
 
 <script>
     const socket = new WebSocket('ws://varanox.xyz:80')
+    const invalidClan = document.getElementById("invalidClan")
     const input = document.getElementById("clantag")
     const submit = document.getElementById("submitbutton")
+    var displayinginfo
+    var clanitems = document.getElementById("info").querySelectorAll(".clanitem")
 
-    const clanbanner = document.getElementById("clanbanner")
+    //Get Clan Info Tags 
+    const clanBanner = document.getElementById("clanBanner")
+
+    const clanName = document.getElementById("clanName")
+    const clanLevel = document.getElementById("clanLevel")
+    const currentMembers = document.getElementById("currentMembers")
+    const clanTag = document.getElementById("clanTagDisplay")
+    const clanDescription = document.getElementById("clanDescription")
+
+    const CWL = document.getElementById("CWL")
+    const totalTrophies = document.getElementById("totalTrophies")
+    const totalVersusTrophies = document.getElementById("totalVersusTrophies")
+    const clanLocation = document.getElementById("clanLocation")
+    const chatLanguage = document.getElementById("chatLanguage")
+    const clanType = document.getElementById("clanType")
+    const requiredTrophies = document.getElementById("requiredTrophies")
+    const requiredVersusTrophies = document.getElementById("requiredVersusTrophies")
+    const requiredTH = document.getElementById("requiredTH")
 
     function handletag() {
         var taginput = input.value
@@ -90,13 +151,44 @@
         function handledata() {
             var claninfo = JSON.parse(event.data)
             console.log("processing: " + claninfo.name)
-            clanbanner.src = claninfo.badgeUrls.medium
+
+            clanBanner.src = claninfo.badgeUrls.medium
+
+            clanName.innerHTML = claninfo.name
+            clanLevel.innerHTML = "Level " + claninfo.clanLevel
+            currentMembers.innerHTML = claninfo.members + "/50 Members"
+            clanTag.innerHTML = "Tag: " + claninfo.tag
+            clanDescription.innerHTML = "Description: " + claninfo.description
+
+            CWL.innerHTML = "Clan War League: " + claninfo.warLeague.name
+            totalTrophies.innerHTML = "Total Home Village points: " + claninfo.clanPoints + "🏆"
+            totalVersusTrophies.innerHTML = "Total Builder Base points: " + claninfo.clanVersusPoints + "🏆"
+            clanLocation.innerHTML = "Clan Location: " + claninfo.location.name
+            chatLanguage.innerHTML = "Chat Language: " + claninfo.chatLanguage.name
+            clanType.innerHTML = "Type: " + claninfo.type
+            requiredTrophies.innerHTML = "Required Home Village trophies: " + claninfo.requiredTrophies + "🏆"
+            requiredVersusTrophies.innerHTML = "Required Builder Base trophies: " + claninfo.requiredVersusTrophies + "🏆" 
+            requiredTH.innerHTML = "Required Town Hall level: " + claninfo.requiredTownhallLevel
+            
+            console.log("finished processing")
+            
+            var displayinginfo = true
         }
 
         if (event.data != `{"reason":"notFound"}`) {
             handledata()
+            invalidClan.innerHTML = ("")
         } else {
-            console.log("invalid clan g")
+            console.log("Invalid Clan")
+            invalidClan.innerHTML = ("Invalid Clan!")
+            
+            if (displayinginfo = true) {
+                let i=0
+                while (i < clanitems.length) {
+                    clanitems[i].innerHTML = ""
+                    i++;
+                }
+            }
         }
     });
 </script>
