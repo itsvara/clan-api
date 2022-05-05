@@ -128,10 +128,14 @@
     const input = document.getElementById("clantag")
     const submit = document.getElementById("submitbutton")
     var displayinginfo
+
+    //Get All Clan Items + Labels.
     var clanitems = document.getElementById("info").querySelectorAll(".clanitem")
     var labelitems = document.getElementById("info").querySelectorAll(".labelitem")
+    //
 
-    //Get Clan Info Tags 
+
+    //Get Clan Info Tags.
     const clanBanner = document.getElementById("clanBanner")
 
     const clanName = document.getElementById("clanName")
@@ -153,6 +157,8 @@
     const labelimg1 = document.getElementById("labelimg1")
     const labelimg2 = document.getElementById("labelimg2")
     const labelimg3 = document.getElementById("labelimg3")
+    //
+
 
     function handletag() {
         var taginput = input.value
@@ -161,6 +167,7 @@
     }
 
     socket.addEventListener('open', function (Event) {
+        //Check WS is working.
         socket.send("hi server :)");
         console.log("sent: hi server :)")
     });
@@ -191,6 +198,7 @@
                 .requiredVersusTrophies + "🏆"
             requiredTH.innerHTML = "Required Town Hall level: " + claninfo.requiredTownhallLevel
 
+            //Efficiently Add Label Images + Details
             let i = 0
             while (i < labelitems.length) {
                     labelitems[i].src = claninfo.labels[i].iconUrls.small
@@ -198,12 +206,15 @@
                     labelitems[i].title = claninfo.labels[i].name
                     i++;
                 }
+            //
+
 
             console.log("finished processing")
 
             var displayinginfo = true
         }
 
+        //Start displaying info if clan is valid.
         if (event.data != `{"reason":"notFound"}`) {
             handledata()
             invalidClan.innerHTML = ("")
@@ -211,12 +222,16 @@
             console.log("Invalid Clan")
             invalidClan.innerHTML = ("Invalid Clan!")
 
+            //Clear screen if clan is invalid.
             if (displayinginfo = true) {
                 let i = 0
                 while (i < clanitems.length) {
                     clanitems[i].innerHTML = ""
                     i++;
                 }
+            //
+
+
             }
         }
     });
