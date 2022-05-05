@@ -28,7 +28,7 @@
     </div>
     <hr style="margin-top: 2.5rem" class="hrfade">
     <div class="text-center">
-        <div id="info" class="info"> 
+        <div id="info" class="info">
             <h1 style="padding-top: 1rem;">Info</h1>
             <h1 style="color:#b00000" id="invalidClan"></h1>
             <br>
@@ -47,6 +47,12 @@
             <h5 class="clanitem" id="requiredTrophies"></h5>
             <h5 class="clanitem" id="requiredVersusTrophies"></h5>
             <h5 class="clanitem" id="requiredTH"></h5>
+            
+            <div style="margin-top: 1.5%;" class="flex center">     
+                <img class="clanitem labelitem labelimg" id="labelimg1"></img>
+                <img class="clanitem labelitem labelimg" id="labelimg2"></img>
+                <img class="clanitem labelitem" id="labelimg3"></img>
+            </div>
 
             <br>
 
@@ -106,6 +112,14 @@
         margin: auto;
         max-width: 50ch;
     }
+
+    .flex {
+        display: flex
+    }
+
+    .labelimg {
+        padding-right: 7.5%;
+    }
 </style>
 
 <script>
@@ -115,6 +129,7 @@
     const submit = document.getElementById("submitbutton")
     var displayinginfo
     var clanitems = document.getElementById("info").querySelectorAll(".clanitem")
+    var labelitems = document.getElementById("info").querySelectorAll(".labelitem")
 
     //Get Clan Info Tags 
     const clanBanner = document.getElementById("clanBanner")
@@ -134,6 +149,10 @@
     const requiredTrophies = document.getElementById("requiredTrophies")
     const requiredVersusTrophies = document.getElementById("requiredVersusTrophies")
     const requiredTH = document.getElementById("requiredTH")
+
+    const labelimg1 = document.getElementById("labelimg1")
+    const labelimg2 = document.getElementById("labelimg2")
+    const labelimg3 = document.getElementById("labelimg3")
 
     function handletag() {
         var taginput = input.value
@@ -166,13 +185,22 @@
             totalVersusTrophies.innerHTML = "Total Builder Base points: " + claninfo.clanVersusPoints + "🏆"
             clanLocation.innerHTML = "Clan Location: " + claninfo.location.name
             chatLanguage.innerHTML = "Chat Language: " + claninfo.chatLanguage.name
-            clanType.innerHTML = "Type: " + claninfo.type
+            clanType.innerHTML = "Type: " + claninfo.type[0].toUpperCase() + claninfo.type.slice(1)
             requiredTrophies.innerHTML = "Required Home Village trophies: " + claninfo.requiredTrophies + "🏆"
-            requiredVersusTrophies.innerHTML = "Required Builder Base trophies: " + claninfo.requiredVersusTrophies + "🏆" 
+            requiredVersusTrophies.innerHTML = "Required Builder Base trophies: " + claninfo
+                .requiredVersusTrophies + "🏆"
             requiredTH.innerHTML = "Required Town Hall level: " + claninfo.requiredTownhallLevel
-            
+
+            let i = 0
+            while (i < labelitems.length) {
+                    labelitems[i].src = claninfo.labels[i].iconUrls.small
+                    labelitems[i].alt = claninfo.labels[i].name
+                    labelitems[i].title = claninfo.labels[i].name
+                    i++;
+                }
+
             console.log("finished processing")
-            
+
             var displayinginfo = true
         }
 
@@ -182,9 +210,9 @@
         } else {
             console.log("Invalid Clan")
             invalidClan.innerHTML = ("Invalid Clan!")
-            
+
             if (displayinginfo = true) {
-                let i=0
+                let i = 0
                 while (i < clanitems.length) {
                     clanitems[i].innerHTML = ""
                     i++;
