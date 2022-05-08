@@ -47,8 +47,8 @@
             <h5 class="clanitem" id="requiredTrophies"></h5>
             <h5 class="clanitem" id="requiredVersusTrophies"></h5>
             <h5 class="clanitem" id="requiredTH"></h5>
-            
-            <div style="margin-top: 1vh;" class="flex center">     
+
+            <div style="margin-top: 1vh;" class="flex center">
                 <img class="clanitem labelitem labelimg" id="labelimg1"></img>
                 <img class="clanitem labelitem labelimg" id="labelimg2"></img>
                 <img class="clanitem labelitem" id="labelimg3"></img>
@@ -56,6 +56,9 @@
 
             <br>
 
+            <div id="users">
+
+            </div>
         </div>
     </div>
     <a rel="noreferrer" href="https://github.com/itsvara" target="_blank"><svg class="githublink" alt="Github"
@@ -120,7 +123,7 @@
     .labelimg {
         padding-right: 7.5%;
     }
-    
+
     #clantag {
         border: 3px solid #0e0e0e;
         border-radius: 3px;
@@ -223,20 +226,54 @@
                 .requiredVersusTrophies + "🏆"
             requiredTH.innerHTML = "Required Town Hall level: " + claninfo.requiredTownhallLevel
 
-            //Efficiently Add Label Images + Details
+            //Add Label Images + Details
             let i = 0
             while (i < labelitems.length) {
-                    labelitems[i].src = claninfo.labels[i].iconUrls.small
-                    labelitems[i].alt = claninfo.labels[i].name
-                    labelitems[i].title = claninfo.labels[i].name
-                    i++;
-                }
+                labelitems[i].src = claninfo.labels[i].iconUrls.small
+                labelitems[i].alt = claninfo.labels[i].name
+                labelitems[i].title = claninfo.labels[i].name
+                i++;
+            }
             //
 
 
             console.log("finished processing")
 
             var displayinginfo = true
+
+
+            class Member {
+                constructor(tag, name, role, level, league, leagueIcon, trophies, versusTrophies, donations,
+                    donationsRecieved) {
+                    this.tag = tag
+                    this.name = name
+                    this.role = role
+                    this.level = level
+                    this.league = league
+                    this.leagueIcon = leagueIcon
+                    this.trophies = trophies
+                    this.versusTrophies = versusTrophies
+                    this.donations = donations
+                    this.donationsRecieved = donationsRecieved
+                }
+            }
+
+            
+
+            i = 0
+            while (i < claninfo.memberList.length) {
+                var jsonMember = claninfo.memberList[i]
+                var newMember = new Member(jsonMember.tag, jsonMember.name, jsonMember.role, jsonMember.level,
+                    jsonMember.league, jsonMember.leagueIcon, jsonMember.trophies, jsonMember
+                    .versusTrophies, jsonMember.donations, jsonMember.donationsRecieved);
+
+                var membertag = document.createElement("h5");
+                var membercontent = document.createTextNode(newMember.name)
+                membertag.appendChild(membercontent);
+                var membersdiv = document.getElementById("users");
+                membersdiv.appendChild(membertag);
+                i++
+            }
         }
 
         //Start displaying info if clan is valid.
@@ -254,10 +291,9 @@
                     clanitems[i].innerHTML = ""
                     i++;
                 }
-            //
-
-
+                //
             }
+
         }
     });
 </script>
