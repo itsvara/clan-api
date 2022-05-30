@@ -3,72 +3,274 @@ h2,
 h3,
 h4,
 h5 {
-    color: #DDD
+  color: #DDD;
 }
 
 body {
-    background-color: #171717;
+  background-color: #171717;
 }
 
 .text-center {
-    text-align: center;
+  text-align: center;
 }
 
 .center {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .githublink {
-    margin-top: 18.5%;
-    margin-bottom: 0.25%;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+  margin-top: 18.5%;
+  margin-bottom: 0.25%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 .hrfade {
-    border: 0;
-    height: 2px;
-    width: 35%;
-    background-image: linear-gradient(to right, transparent, #bdbdbd, transparent);
-    margin: auto;
+  border: 0;
+  height: 2px;
+  width: 35%;
+  background-image: linear-gradient(to right, transparent, #bdbdbd, transparent);
+  margin: auto;
 }
 
 #clanDescription {
-    margin: auto;
-    max-width: 50ch;
+  margin: auto;
+  max-width: 50ch;
 }
 
 .flex {
-    display: flex
+  display: flex;
 }
 
 .labelimg {
-    padding-right: 7.5%;
+  padding-right: 7.5%;
 }
 
 #clantag {
-    border: 3px solid #0e0e0e;
-    border-radius: 3px;
-    background-color: #2f2f2f;
-    color: #fff;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    border-right: transparent;
-    font-size: 0.9vw;
+  border: 3px solid #0e0e0e;
+  border-radius: 3px;
+  background-color: #2f2f2f;
+  color: #fff;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-right: transparent;
+  font-size: 0.9vw;
 }
 
 #submitbutton {
-    border: 3px solid #0e0e0e;
-    background-color: #2f2f2f;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-    color: #fff;
-    /*margin-right: 1vw;*/
-    padding-left: 0.5vw;
-    padding-right: 0.5vw;
-    padding-top: 0.5vh;
-    padding-bottom: 0.5vh;
-    font-size: 0.9vw;
+  border: 3px solid #0e0e0e;
+  background-color: #2f2f2f;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  color: #fff;
+  /*margin-right: 1vw;*/
+  padding-left: 0.5vw;
+  padding-right: 0.5vw;
+  padding-top: 0.5vh;
+  padding-bottom: 0.5vh;
+  font-size: 0.9vw;
 }
+
+#member0:hover {
+  color: #9398D6;
+}
+
+#member1:hover {
+  color: #9398D6;
+}
+
+#member2:hover {
+  color: #9398D6;
+}
+
+#member3:hover {
+  color: #9398D6;
+}
+
+#member4:hover {
+  color: #9398D6;
+}
+
+#member5:hover {
+  color: #9398D6;
+}
+
+#member6:hover {
+  color: #9398D6;
+}
+
+#member7:hover {
+  color: #9398D6;
+}
+
+#member8:hover {
+  color: #9398D6;
+}
+
+#member9:hover {
+  color: #9398D6;
+}
+
+#member10:hover {
+  color: #9398D6;
+}
+
+#member11:hover {
+  color: #9398D6;
+}
+
+#member12:hover {
+  color: #9398D6;
+}
+
+#member13:hover {
+  color: #9398D6;
+}
+
+#member14:hover {
+  color: #9398D6;
+}
+
+#member15:hover {
+  color: #9398D6;
+}
+
+#member16:hover {
+  color: #9398D6;
+}
+
+#member17:hover {
+  color: #9398D6;
+}
+
+#member18:hover {
+  color: #9398D6;
+}
+
+#member19:hover {
+  color: #9398D6;
+}
+
+#member20:hover {
+  color: #9398D6;
+}
+
+#member21:hover {
+  color: #9398D6;
+}
+
+#member22:hover {
+  color: #9398D6;
+}
+
+#member23:hover {
+  color: #9398D6;
+}
+
+#member24:hover {
+  color: #9398D6;
+}
+
+#member25:hover {
+  color: #9398D6;
+}
+
+#member26:hover {
+  color: #9398D6;
+}
+
+#member27:hover {
+  color: #9398D6;
+}
+
+#member28:hover {
+  color: #9398D6;
+}
+
+#member29:hover {
+  color: #9398D6;
+}
+
+#member30:hover {
+  color: #9398D6;
+}
+
+#member31:hover {
+  color: #9398D6;
+}
+
+#member32:hover {
+  color: #9398D6;
+}
+
+#member33:hover {
+  color: #9398D6;
+}
+
+#member34:hover {
+  color: #9398D6;
+}
+
+#member35:hover {
+  color: #9398D6;
+}
+
+#member36:hover {
+  color: #9398D6;
+}
+
+#member37:hover {
+  color: #9398D6;
+}
+
+#member38:hover {
+  color: #9398D6;
+}
+
+#member39:hover {
+  color: #9398D6;
+}
+
+#member40:hover {
+  color: #9398D6;
+}
+
+#member41:hover {
+  color: #9398D6;
+}
+
+#member42:hover {
+  color: #9398D6;
+}
+
+#member43:hover {
+  color: #9398D6;
+}
+
+#member44:hover {
+  color: #9398D6;
+}
+
+#member45:hover {
+  color: #9398D6;
+}
+
+#member46:hover {
+  color: #9398D6;
+}
+
+#member47:hover {
+  color: #9398D6;
+}
+
+#member48:hover {
+  color: #9398D6;
+}
+
+#member49:hover {
+  color: #9398D6;
+}
+
+/*# sourceMappingURL=out.css.map */
