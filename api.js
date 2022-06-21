@@ -11,20 +11,28 @@ const wss = new ws.Server({
 wss.on('connection', function connection(ws) {
     ws.on('message', function message(data) {
         console.log("recieved: %s", data)
-        let recievedtag = ("%s", data)
-        if (recievedtag != "hi server :)") {
-        var savepath = "claninfo.json"
-        superagent
-            .get(`https://api.clashofclans.com/v1/clans/%23${recievedtag}`)
-            .set('Accept', 'application/json')
-            .set('Authorization', `Bearer ${token.token}`)
-            .end((err, res) => {
-                let clandata = JSON.stringify(res.body)
-                //console.log(clandata)
-                fs.writeFileSync(savepath, clandata);
-                console.log(`Wrote clan info to ${savepath}`)
-                ws.send(clandata)
-            });
+        let recieved = ("%s", data)
+        if (recieved.slice(0, 4) == "tag:") {
+            let cuttag = recieved.slice(5)
+
+            const savedir = `./claninfo`
+            if (!fs.existsSync(savedir)) {
+                console.log("./claninfo directory not found, creating...")
+                fs.mkdirSync(savedir)
+            }
+
+            var savepath = savedir + '/' + cuttag + '.json'
+            superagent
+                .get(`https://api.clashofclans.com/v1/clans/%23${cuttag}`)
+                .set('Accept', 'application/json')
+                .set('Authorization', `Bearer ${token.token}`)
+                .end((err, res) => {
+                    let clandata = JSON.stringify(res.body)
+                    //console.log(clandata)
+                    fs.writeFileSync(savepath, clandata);
+                    console.log(`Wrote clan info to ${savepath}`)
+                    ws.send(clandata)
+                });
         }
         //var clandata = fs.readFileSync("claninfo.json").toString();
     });
