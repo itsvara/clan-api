@@ -20,11 +20,10 @@ body {
 }
 
 .githublink {
-  margin-top: 18.5%;
-  margin-bottom: 0.25%;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 12px;
+  margin-left: 12px;
 }
 
 .hrfade {
@@ -49,6 +48,7 @@ body {
 }
 
 #clantag {
+  max-width: 45vw;
   border: 3px solid #0e0e0e;
   border-radius: 3px;
   background-color: #2f2f2f;
@@ -56,7 +56,7 @@ body {
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
   border-right: transparent;
-  font-size: 0.9vw;
+  font-size: 1em;
 }
 
 #submitbutton {
@@ -70,7 +70,7 @@ body {
   padding-right: 0.5vw;
   padding-top: 0.5vh;
   padding-bottom: 0.5vh;
-  font-size: 0.9vw;
+  font-size: 1em;
 }
 
 #member0:hover {
