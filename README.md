@@ -5,10 +5,8 @@ shows details of a clash of clans clan of your choice
 
 ## https://varanox.xyz/clan-api/
 
+### note: the .css and .js files dont actually do anything, they are just there to easily read the code. (for some reason css and js in files break for me and i can only use their corresponding tags in html :))
 
+### another note: The api.js file only hosts locally. You will have to change the js in the index.html file to connect to your websocket server or else it will connect to varanox.xyz.
 
-
-by the way the api.js isnt what the websocket is being hosted on because i made it a part of a express thing but my ip is in the file and i'm not showing that so yeah shame
-although if you were to host it on api.js then you would be good locally but not with da other people
-
-thank you to corbie for fixing the api.js (my version :trollface:) wow
+thank you to corbie for fixing the api.js (my version :trollface:)
