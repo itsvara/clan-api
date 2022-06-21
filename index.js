@@ -11,6 +11,8 @@ var labelitems = document.getElementById("info").querySelectorAll(".labelitem")
 
 
 //Get Clan Info Tags.
+const favicon = document.getElementById("favicon")
+
 const clanBanner = document.getElementById("clanBanner")
 
 const clanName = document.getElementById("clanName")
@@ -53,6 +55,7 @@ socket.addEventListener('message', function (event) {
     function handledata() {
         var claninfo = JSON.parse(event.data)
         console.log("processing: " + claninfo.name)
+        favicon.href = claninfo.badgeUrls.medium
 
         clanBanner.src = claninfo.badgeUrls.medium
 
