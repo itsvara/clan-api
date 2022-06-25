@@ -1,7 +1,13 @@
 const superagent = require("superagent");
 const ws = require("ws");
 const fs = require("fs");
-const token = require("D:\\!Everything\\Good Stuff\\!Programming Shit\\!Web\\varanox.xyz\\token.json");
+
+if (!fs.existsSync('./token.json')) {
+    console.log('token.json not found! Read the README for instructions on how to get an api token.')
+    process.exit(0)
+}
+
+const token = require("./token.json");
 
 //WebSocket Server
 const wss = new ws.Server({
