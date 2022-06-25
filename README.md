@@ -14,9 +14,14 @@ shows details of a clash of clans clan of your choice
 ## END OF SETUP
 
 ### To Do.
+#### Major Additions:
 - [ ] Make clan member names clickable to show more info on the member. (added hover color on user to start off lol)
+
+#### Minor Additions:
 - [ ] Add padding/margins to the bottom of the page so the last clan member isnt so close to the bottom of the page.
 - [ ] Make github logo responsive so that it does not overlap over page content on tiny device screens.
+- [ ] Make more efficient way of changing hover color of member name 
+
 
 ### note: the .css and .js files dont actually do anything, they are just there to easily read the code. (for some reason css and js in files break for me and i can only use their corresponding tags in html :))
 
